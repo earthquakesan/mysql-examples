@@ -17,3 +17,13 @@ start-adminer:
 
 enter-mysql:
 	docker exec -it mysql mysql -u root -p examples
+
+## Database is taken from here https://github.com/datacharmer/test_db
+install-employees-db:
+	wget https://github.com/datacharmer/test_db/archive/master.zip
+	unzip master.zip && rm master.zip
+	docker cp test_db-master/. mysql:/
+	docker exec -it mysql sh -c "mysql -u root -p examples < /employees.sql"
+
+restart-adminer:
+	docker restart adminer
