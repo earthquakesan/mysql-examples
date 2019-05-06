@@ -4,7 +4,6 @@ create-network:
 
 start-mysql: create-network
 	docker run -d --name mysql \
-	-p 3306:3306 \
 	-e MYSQL_DATABASE=examples \
 	-e MYSQL_ROOT_PASSWORD=root \
 	--network ${NETWORK_NAME} \
